@@ -1,183 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-      <!-- Bootstrap 4 CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-      <!-- css custom  -->
-      <link rel="stylesheet" href="style.css">
-      <!-- font icon  -->
-      <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
-      <!-- google font  -->
-      <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap" rel="stylesheet">
-
-    <title> Wethaq </title>
-
-</head>
-<body>
-   
-          <!---------- nav bar --------------->
-          <section id="nav-bar">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand text-white " href="#">
-                    <img src="img/وثاق.png" alt="logo" style="
-                    height: 90px;"></a>
-                    <a class="navbar-brand text-white " href="#">
-                    <img src="img/صورة1.png" alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" href="#">الصفحة الرئيسية<span class="sr-only">(current)</span></a>
-                        </li>
-                    <li class="nav-item ">
-                        <a class="nav-link text-white" href="index.htm"> من نحن </a>
-                    </li>
-          
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="indexC.html">اتصل بنا</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="indexFAQs.html">الأسئلة الشائعة</a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link  text-white" href="login.html" > التسجيل   
-                      </a>
-                     
-                  </li>
-           
-                    </ul>
-                </div>
-            </nav>
-        </section>
-
-                <!-------------- banner  ----------->
-                <section id="banner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="promo-title">
-                                  من أجدادنا إلى أبراجنا… كل قصة تستحق أن تعرفها
-                                  او الى حاضرنا
-                                  
-                                </p>
-
-                                <p class="">قصصنا المحلية، بتقنيات عالمية </p>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <img src="img/صورة2.png" class="img-fluid bannerimg">
-                            </div>
-                        </div>
-                    </div>
- <!----------- waves ---------->
-         <div id="waves">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200">
-            <path fill="#ffff" fill-opacity="1" d="M0,128L40,112C80,96,160,64,240,69.3C320,75,400,117,480,112C560,107,640,53,720,42.7C800,32,880,64,960,90.7C1040,117,1120,139,1200,138.7C1280,139,1360,117,1400,106.7L1440,96L1440,200L1400,200C1360,200,1280,200,1200,200C1120,200,1040,200,960,200C880,200,800,200,720,200C640,200,560,200,480,200C400,200,320,200,240,200C160,200,80,200,40,200L0,200Z"></path>
-        </svg>
-        
-</div>
-
-
-            
-                </section>
-  
-<!---->
-<!---------text and more sentense----------------->
-<section>
-<div class="container upload-container" >
-  <div class="upload-area" id="upload-area">
-    <span class="upload-icon">📷</span>
-    <input type="file" id="file-input" accept="image/*" />
-  </div>
-  <label class="upload-label">قم بتحميل المعلم الساحي او اسحبها </label>
-  <p class="description">ادخل صورة من اختيارك</p>
-</div>
-</section>
-
-<script>
-  const uploadArea = document.getElementById('upload-area');
-  const fileInput = document.getElementById('file-input');
-
-  uploadArea.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadArea.classList.add('dragover');
-  });
-
-  uploadArea.addEventListener('dragleave', () => {
-    uploadArea.classList.remove('dragover');
-  });
-
-  uploadArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadArea.classList.remove('dragover');
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      fileInput.files = files;
-      handleFileUpload(files[0]);
-    }
-  });
-
-  uploadArea.addEventListener('click', () => {
-    fileInput.click();
-  });
-
-  fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    if (file) {
-      handleFileUpload(file);
-    }
-  });
-
-  function handleFileUpload(file) {
-    console.log('File uploaded:', file.name);
-    // Handle file processing here (preview, upload, etc.)
-  }
-</script>
-<br>
-<br>
-<br>
-
-<!---------------- footer  ------------>
-<section class="footer">
-  <div class="card-body text-white">
-      <div class="container-fluid text-end">
-          <div class="row">
-              <div class="col-md-4">
-                  <h3 class="footertitle">وثاق</h3>
-                  <p class=" text-justify">
-                      "وثاق"، يمكن للمستخدمين استكشاف تراث المملكة بطرق جديدة ومبتكرة، مما يساهم في تحقيق أهداف تحدي "علاّم24". التطبيق لن يعزز فقط من قيمة التراث الثقافي، بل سيجذب المزيد من الزوار المحليين والدوليين إلى المملكة بفضل تجربة تفاعلية ممتعة وشاملة تعكس تنوع المملكة الثقافي والتاريخي.        </p>
-              </div>
-              <div class="col-md-4 text-center">
-                  <div class="social-mun ">
-                      <h4 class="footertitle pb-2 ">تابعنا على مواقع التواصل الاجتماعي</h4>
-                      <ul>
-                          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                      </ul>
-                  </div>
-                  <h6 class="footertitle pt-5 ">جميع الحقوق محفوظه &copy;وثاق</h6>
-              </div>
-              <div class="col-md-4">
-                  <h4 class="footertitle ">النشرة البريدية</h4>
-                  <p class="">  لتصلك مقالات اسبوعية من Wethaq
-                   </p>
-                  <input type="text" class="form-control w-75" id="email" placeholder="Wethaq@Wethaq.com"
-                      name="email">
-                  <p class=""><small>لن نستخدم بريدك خارج نطاق النشرة إطلاقًا</small></p>
-                  <button type="button" class="btn btn-primary">Submit</button>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-</body>
-</html>
