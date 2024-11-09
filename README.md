@@ -1,11 +1,7 @@
 ![WhatsApp Image 2024-11-09 at 12 19 33 PM](https://github.com/user-attachments/assets/7e725ad0-69b9-45dc-927a-a1d90114baea)
 
 # Wethaq
-
-Wethaq is a smart product that aims to provide an unprecedented tourism experience in the Kingdom. Using artificial intelligence technologies and large language models (LLMs), the product allows visitors to interact with Saudi landmarks in personal and innovative ways. Simply, visitors can point their cameras towards any tourist landmark to be greeted with audio content and storytelling in a local dialect that reflects the culture of the region.
-Wathaq, exploring Saudi culture
-Description of the idea
-Whether you are touring the Masmak Palace in Riyadh, or enjoying the southern heritage in Asir, Wathaq will make the experience interactive and personal, blending the past and the present, and allowing visitors to immerse themselves in the details of the place.
+Wethaq is an AI-powered tourism experience that allows visitors to interact with Saudi landmarks through personalized audio storytelling in local dialects, blending culture and technology for an immersive journey.
 
 ## Features
 
@@ -118,6 +114,6 @@ Note: Ensure that Milvus is running locally or on a remote server and that IBM W
 - **Running the Application**: Explains how to start the Flask app and interact with the API.
 
 ---
-🪪 License This project is licensed under the MIT License - see the LICENSE file for details.
-🪪 
+🪪 Allam License: https://github.com/metallama/llama/blob/main/LICENSE
+🪪 License: This project is licensed under the MIT License - see the LICENSE file for details. 
 
