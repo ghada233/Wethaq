@@ -107,10 +107,6 @@ pip install -r requirements.txt
 ```
 Note: Ensure that Milvus is running locally or on a remote server and that IBM WatsonX credentials are properly set in the .env file.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-
 ---
 
 ### Key Sections:
@@ -118,3 +114,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Setup Instructions**: How to set up the environment, install dependencies, and configure the environment variables.
 - **Milvus Integration Guide**: Provides the code for embedding text and performing semantic search with Milvus.
 - **Running the Application**: Explains how to start the Flask app and interact with the API.
+
+---
+🪪 License This project is licensed under the MIT License - see the LICENSE file for details.
+🪪 
+
