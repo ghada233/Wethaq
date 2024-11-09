@@ -114,6 +114,11 @@ Note: Ensure that Milvus is running locally or on a remote server and that IBM W
 - **Running the Application**: Explains how to start the Flask app and interact with the API.
 
 ---
-🪪 Allam License: https://github.com/metallama/llama/blob/main/LICENSE
-🪪 License: This project is licensed under the MIT License - see the LICENSE file for details. 
+License
 
+```bash
+🪪 Allam License: https://github.com/metallama/llama/blob/main/LICENSE
+```
+```bash
+🪪 License: This project is licensed under the MIT License - see the LICENSE file for details. 
+```
