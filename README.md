@@ -15,7 +15,7 @@ Whether you are touring the Masmak Palace in Riyadh, or enjoying the southern he
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/Wethaq.git
