@@ -1,0 +1,6 @@
+Flask==2.0.2
+python-dotenv==0.19.2
+openai
+pymilvus>=2.4.4
+tqdm
+certifi

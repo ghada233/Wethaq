@@ -185,34 +185,22 @@
        
             <label>معلمك السياحي: {{ prediction }}</label>
 
-            <button class="upload-button">تحميل صورة جديدة</button>
+            <a href="{{ url_for('index') }}" class="upload-button" style="text-decoration:none;">تحميل صورة جديدة</a>
         </div>
 
         <!-- Chat Section -->
         <div class="chat-section">
-            <div class="chat-box">
-                <p><strong>الروبوت:</strong> مرحبًا! كيف يمكنني مساعدتك اليوم؟</p>
-                <audio controls>
-                    <source src="audio/greeting.mp3" type="audio/mpeg">
-                    متصفحك لا يدعم تشغيل الصوت.
-                </audio>
-
-                <p><strong>أنت:</strong> هل يمكنك إخباري المزيد عن الميزات؟</p>
-
-                <p><strong>الروبوت:</strong> بالتأكيد! إليك بعض التوصيات...</p>
-                <audio controls>
-                    <source src="audio/recommendation.mp3" type="audio/mpeg">
-                    متصفحك لا يدعم تشغيل الصوت.
-                </audio>
+            <div class="chat-box"  id="chat-box">
+                <p><strong>وثاق:</strong> {{ generated_text }}</p>
             </div>
-            <div class="recommendations">
-                <div class="recommendation-box">توصية 1</div>
-                <div class="recommendation-box">توصية 2</div>
-                <div class="recommendation-box">توصية 3</div>
+            <div class="recommendations" id="recommendations">
+                {% for recommendation in recommendations %}
+                <div class="recommendation-box" data-recommendation="{{ recommendation }}">{{ recommendation }}</div>
+                 {% endfor %}
             </div>
             <div class="input-box">
-                <input type="text" placeholder="اكتب سؤالك هنا...">
-                <button>إرسال</button>
+                <input type="text" id="user-input" placeholder="اكتب سؤالك هنا...">
+                <button onclick="sendMessage()">إرسال</button>
             </div>
 
 
@@ -221,4 +209,87 @@
 </div>
 
 </body>
+<script>
+    function sendMessage() {
+        // Get the user's input
+        var userInput = document.getElementById('user-input').value;
+
+        // Display the user's message in the chat box
+        var chatBox = document.getElementById('chat-box');
+        chatBox.innerHTML += `<p><strong>أنت:</strong> ${userInput}</p>`;
+        
+        // Clear the input field
+        document.getElementById('user-input').value = '';
+        
+        // Make a request to the backend to get the generated text
+        fetch('/result', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ 'prompt': userInput })  // Send the user input (prompt) as form data
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Append the generated text to the chat box
+            var generatedText = data.generated_text;  // assuming your backend returns { generated_text: '...'}
+            chatBox.innerHTML += `<p><strong>وثاق:</strong> ${generatedText}</p>`;
+
+            updateRecommendations(userInput);  // Call the function to update recommendations
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function updateRecommendations(prompt) {
+        // Make a request to the recommendation endpoint
+        fetch('/recommendation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ 'prompt': prompt })  // Send the prompt as form data
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.recommendations)
+            // Check if recommendations are returned
+            if (data.recommendations) {
+                var recommendations = data.recommendations;
+                var recommendationsDiv = document.getElementById('recommendations');
+
+                // Clear the previous recommendations
+                recommendationsDiv.innerHTML = '';
+
+                // Add the new recommendations to the recommendations section
+                recommendations.forEach(function(recommendation, i) {
+                    var recommendationBox = document.createElement('div');
+                    recommendationBox.classList.add(`recommendation-box`);
+                    recommendationBox.textContent = recommendation;
+                    recommendationsDiv.appendChild(recommendationBox);
+                });
+            } else {
+                console.error('No recommendations returned');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    // Use event delegation to handle clicks on recommendation boxes
+    document.getElementById('recommendations').addEventListener('click', function(e) {
+        // Check if the clicked element is a recommendation box
+        if (e.target && e.target.classList.contains('recommendation-box')) {
+            // Get the recommendation text from the data-recommendation attribute
+            const recommendationText = e.target.getAttribute('data-recommendation');
+            
+            // Set the input field value with the selected recommendation
+            document.getElementById('user-input').value = recommendationText;
+        }
+    });
+});
+</script>
 </html>
