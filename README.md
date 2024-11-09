@@ -57,9 +57,6 @@ Endpoint: /generate_speech
 Method: POST
 
 Request Body:
-
-json
-Copy code
 ```bash
 {
   "text": "Your text here",
@@ -68,9 +65,6 @@ Copy code
 ```
 
 Response:
-
-json
-Copy code
 ```bash
 {
   "message": "Speech generated successfully",
@@ -80,23 +74,17 @@ Copy code
 Search in Milvus
 Performs a semantic search in Milvus for the most similar text.
 
-Endpoint: /search
+🦾 Endpoint: /search
 
 Method: POST
 
 Request Body:
-
-json
-Copy code
 ```bash
 {
   "query": "Your query text here"
 }
 ```
 Response:
-
-json
-Copy code
 ```bash
 {
   "results": [
@@ -114,8 +102,6 @@ Milvus: A vector database for efficient similarity search.
 IBM WatsonX API: Optional, for leveraging AI services (like NLP, AI models).
 Install the required Python libraries:
 
-bash
-Copy code
 ```bash
 pip install -r requirements.txt
 ```
@@ -124,8 +110,6 @@ Note: Ensure that Milvus is running locally or on a remote server and that IBM W
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-yaml
-Copy code
 
 ---
 
