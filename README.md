@@ -1,3 +1,5 @@
+![WhatsApp Image 2024-11-09 at 12 19 33 PM](https://github.com/user-attachments/assets/7e725ad0-69b9-45dc-927a-a1d90114baea)
+
 # Wethaq
 
 Wethaq is a smart product that aims to provide an unprecedented tourism experience in the Kingdom. Using artificial intelligence technologies and large language models (LLMs), the product allows visitors to interact with Saudi landmarks in personal and innovative ways. Simply, visitors can point their cameras towards any tourist landmark to be greeted with audio content and storytelling in a local dialect that reflects the culture of the region.
