@@ -4,3 +4,4 @@ openai
 pymilvus>=2.4.4
 tqdm
 certifi
+TTS

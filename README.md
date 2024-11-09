@@ -10,6 +10,20 @@ Wethaq is an AI-powered tourism experience that allows visitors to interact with
 - **Text-to-Speech**: Converts Arabic text to speech using a multilingual TTS model.
 - **Integration with IBM WatsonX**: Provides AI-powered text processing and data management.
 
+```
+Requirements
+Flask: Python web framework for building the application.
+Sentence-Transformer: Used for generating text embeddings.
+Milvus: A vector database for efficient similarity search.
+IBM WatsonX API: Optional, for leveraging AI services (like NLP, AI models).
+Install the required Python libraries:
+
+```bash
+pip install -r requirements.txt
+```
+Note: Ensure that Milvus is running locally or on a remote server and that IBM WatsonX credentials are properly set in the .env file.
+
+---
 
 ## Installation
 
@@ -38,80 +52,35 @@ Connecting to Milvus: The Milvus client will connect to your local or remote Mil
 Sentence-Transformer and Milvus Integration
 Embedding Text: The SentenceTransformer model is used to generate embeddings for the text that you want to search. This embedding is then used for similarity search in Milvus.
 
-## Running the Application
-To run the Flask application, execute the following command:
 
-bash
-Copy code
-flask run
-This will start the server, and you can interact with the API at http://127.0.0.1:5000.
+## Docker and Docker Compose Setup
 
-API Endpoints
-Generate Speech
-Converts input text into speech and saves it as a file.
+To run the **Wethaq** Flask application in a containerized environment using Docker and Docker Compose, follow these steps:
 
-Endpoint: /generate_speech
+### 1. **Docker Setup**
 
-Method: POST
+Make sure Docker and Docker Compose are installed on your system. If not, follow the official installation guides:
 
-Request Body:
-```bash
-{
-  "text": "Your text here",
-  "language": "ar"  # Optional, default is Arabic (ar)
-}
-```
+- **Docker**: [Get Docker](https://docs.docker.com/get-docker/)
+- **Docker Compose**: [Get Docker Compose](https://docs.docker.com/compose/install/)
 
-Response:
-```bash
-{
-  "message": "Speech generated successfully",
-  "audio_file": "/path/to/generated_audio.wav"
-}
-```
-Search in Milvus
-Performs a semantic search in Milvus for the most similar text.
+### 2. **Build Docker Image**
 
-🦾 Endpoint: /search
-
-Method: POST
-
-Request Body:
-```bash
-{
-  "query": "Your query text here"
-}
-```
-Response:
-```bash
-{
-  "results": [
-    {
-      "text": "Most similar document text",
-      "distance": 0.1234
-    }
-  ]
-}
-```
-Requirements
-Flask: Python web framework for building the application.
-Sentence-Transformer: Used for generating text embeddings.
-Milvus: A vector database for efficient similarity search.
-IBM WatsonX API: Optional, for leveraging AI services (like NLP, AI models).
-Install the required Python libraries:
+In the project root directory, where the `Dockerfile` is located, run the following command to build the Docker image:
 
 ```bash
-pip install -r requirements.txt
+docker build -t wethaq-app .
 ```
-Note: Ensure that Milvus is running locally or on a remote server and that IBM WatsonX credentials are properly set in the .env file.
 
----
+This will build the image for the Wethaq application.
 
-### Key Sections:
+### 3. **How to deploy it locally **
 
-- **Setup Instructions**: How to set up the environment, install dependencies, and configure the environment variables.
-- **Milvus Integration Guide**: Provides the code for embedding text and performing semantic search with Milvus.
-- **Running the Application**: Explains how to start the Flask app and interact with the API.
+To run this project on your machine, you have to clone it and simply run a
+
+```bash
+docker compose up -d
+```
 
 ---
 License
