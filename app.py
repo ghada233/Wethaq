@@ -5,6 +5,8 @@ from config import IBM_WATSONX_API_KEY, IBM_WATSONX_PROJECT_ID, IBM_WATSONX_URL
 from utils.cv_model_utils import predict_image
 from utils.allam import IBMWatsonXAIWrapper
 import re
+from utils.tts_utils import text_to_speech
+from utils.milvus_utils import get_context
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -38,15 +40,26 @@ def get_recommendations(user_prompt):
 def result():
     if request.method == 'POST':
         # Handle the user input prompt
-        prompt = request.form.get('prompt')  # Get the user input prompt from the form
+        user_prompt = request.form.get('prompt')  # Get the user input prompt from the form
 
-        if prompt:
+        if user_prompt:
             try:
+                # Retrieve the context (top 3 most similar documents)
+                context = get_context(user_prompt)
+
+                # Format the context into a string, if you get multiple results, join them
+                context_text = "\n".join([entry['text'] for entry in context])
+
+                # Construct the final prompt including the context
+                prompt = f"تاريخ {user_prompt}:\n{context_text}\nأكتبلي تاريخ {user_prompt} بشكل مختصر"
+
                 # Generate the response text from the AI model
                 generated_text = allam.generate_text(prompt)
-                
+
+                audio_file_path = text_to_speech(generated_text, output_filename="output.wav", language='ar')
+
                 # Return the generated text as JSON
-                return jsonify({'generated_text': generated_text})
+                return jsonify({'generated_text': generated_text, 'audio_file_path': audio_file_path})
             except Exception as e:
                 return jsonify({'error': str(e)}), 500
         else:
@@ -60,10 +73,18 @@ def result():
             try:
                 prediction = predict_image(image_path)  # Get prediction
                 image_url = url_for('static', filename=f'uploads/{filename}')
-                
-                prompt = f"اكتبلي تاريخ {prediction} بشكل مختصر"
+
+                # Retrieve the context (top 3 most similar documents)
+                context = get_context(user_prompt)
+
+                # Format the context into a string, if you get multiple results, join them
+                context_text = "\n".join([entry['text'] for entry in context])
+
+                # Construct the final prompt including the context
+                prompt = f"تاريخ {user_prompt}:\n{context_text}\nأكتبلي تاريخ {user_prompt} بشكل مختصر"
+
+                # Generate the response text from the AI model
                 generated_text = allam.generate_text(prompt)
-                print(generated_text)
 
                 # Render the result template with the prediction and generated text
                 return render_template('result.html', prediction=prediction, image_url=image_url,
@@ -79,7 +100,7 @@ def recommendation():
     if prompt:
         try:
             recommendations = get_recommendations(prompt)
-            
+
             # Return the recommendations as JSON
             return jsonify({'recommendations': recommendations})
         except Exception as e:

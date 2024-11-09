@@ -181,8 +181,8 @@
             <img src="{{ image_url }}">
             {% else %}
             <p>No image to display</p>
-        {% endif %}
-       
+            {% endif %}
+
             <label>معلمك السياحي: {{ prediction }}</label>
 
             <a href="{{ url_for('index') }}" class="upload-button" style="text-decoration:none;">تحميل صورة جديدة</a>
@@ -191,6 +191,9 @@
         <!-- Chat Section -->
         <div class="chat-section">
             <div class="chat-box"  id="chat-box">
+                <audio controls>
+                    <source src="{{ audio_file_path }}" type="audio/mpeg">
+                </audio>
                 <p><strong>وثاق:</strong> {{ generated_text }}</p>
             </div>
             <div class="recommendations" id="recommendations">
