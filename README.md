@@ -60,18 +60,23 @@ Request Body:
 
 json
 Copy code
+```bash
 {
   "text": "Your text here",
   "language": "ar"  # Optional, default is Arabic (ar)
 }
+```
+
 Response:
 
 json
 Copy code
+```bash
 {
   "message": "Speech generated successfully",
   "audio_file": "/path/to/generated_audio.wav"
 }
+```
 Search in Milvus
 Performs a semantic search in Milvus for the most similar text.
 
@@ -83,13 +88,16 @@ Request Body:
 
 json
 Copy code
+```bash
 {
   "query": "Your query text here"
 }
+```
 Response:
 
 json
 Copy code
+```bash
 {
   "results": [
     {
@@ -98,6 +106,7 @@ Copy code
     }
   ]
 }
+```
 Requirements
 Flask: Python web framework for building the application.
 Sentence-Transformer: Used for generating text embeddings.
@@ -107,7 +116,9 @@ Install the required Python libraries:
 
 bash
 Copy code
+```bash
 pip install -r requirements.txt
+```
 Note: Ensure that Milvus is running locally or on a remote server and that IBM WatsonX credentials are properly set in the .env file.
 
 License
