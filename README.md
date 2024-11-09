@@ -1,6 +1,9 @@
 # Wethaq
 
-Wethaq is a Flask web application that integrates multiple technologies including Milvus for efficient search, IBM WatsonX for AI services, and the Sentence-Transformer model for text embedding. The app is designed to handle text-based queries, generate embeddings, and perform semantic search with Milvus. Additionally, it uses text-to-speech capabilities for generating audio responses.
+Wethaq is a smart product that aims to provide an unprecedented tourism experience in the Kingdom. Using artificial intelligence technologies and large language models (LLMs), the product allows visitors to interact with Saudi landmarks in personal and innovative ways. Simply, visitors can point their cameras towards any tourist landmark to be greeted with audio content and storytelling in a local dialect that reflects the culture of the region.
+Wathaq, exploring Saudi culture
+Description of the idea
+Whether you are touring the Masmak Palace in Riyadh, or enjoying the southern heritage in Asir, Wathaq will make the experience interactive and personal, blending the past and the present, and allowing visitors to immerse themselves in the details of the place.
 
 ## Features
 
@@ -8,10 +11,6 @@ Wethaq is a Flask web application that integrates multiple technologies includin
 - **Semantic Search**: Uses Milvus and Sentence-Transformer to perform efficient similarity searches.
 - **Text-to-Speech**: Converts Arabic text to speech using a multilingual TTS model.
 - **Integration with IBM WatsonX**: Provides AI-powered text processing and data management.
-
-## Project Structure
-
-Wethaq/ │ ├── app.py # Main Flask application ├── tts_utils.py # Utility for text-to-speech conversion ├── config.py # Configuration file for environment variables ├── models/ # Folder to store model files (e.g., TTS, ML models) ├── requirements.txt # Python dependencies └── README.md # Project documentation
 
 bash
 Copy code
