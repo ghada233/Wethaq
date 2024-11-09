@@ -12,8 +12,6 @@ Whether you are touring the Masmak Palace in Riyadh, or enjoying the southern he
 - **Text-to-Speech**: Converts Arabic text to speech using a multilingual TTS model.
 - **Integration with IBM WatsonX**: Provides AI-powered text processing and data management.
 
-bash
-Copy code
 
 ## Installation
 
